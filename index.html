@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhoan Galeano | Consultoría Informática & Desarrollo Web</title>
+    
+    <!-- Meta SEO & Social Sharing -->
+    <meta name="description" content="Portafolio profesional de Jhoan Galeano - Estudiante de Ingeniería de Sistemas, Consultor de TI y Desarrollador Web Full Stack. Soluciones tecnológicas futuristas y eficientes.">
+    <meta name="keywords" content="Jhoan Galeano, Ingenieria de Sistemas, Consultoria Informatica, Desarrollo Web, AVICTRANS, COOTRANSTEFLUARAUCA, DICMECAMP, AGROINVERSIONESJG">
+    <meta name="author" content="Jhoan Galeano">
+    <meta property="og:title" content="Jhoan Galeano | Consultoría Informática & Desarrollo Web">
+    <meta property="og:description" content="Servicios de consultoría informática, desarrollo de software y transformación digital. Experiencia con AVICTRANS, COOTRANSTEFLUARAUCA, DICMECAMP y AGROINVERSIONESJG.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) with Custom Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#030712',
+                            darker: '#02040a',
+                            card: 'rgba(11, 19, 38, 0.75)',
+                            cyan: '#00f5ff',
+                            neon: '#06b6d4',
+                            violet: '#8b5cf6',
+                            purple: '#a855f7',
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                            border: 'rgba(0, 245, 255, 0.25)'
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 20px rgba(0, 245, 255, 0.4), 0 0 40px rgba(0, 245, 255, 0.1)',
+                        'neon-violet': '0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.1)',
+                        'cyber-card': '0 8px 32px 0 rgba(0, 245, 255, 0.08)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cyber-darker text-slate-100 font-rajdhani selection:bg-cyber-cyan selection:text-black overflow-x-hidden min-h-screen relative">
+
+    <!-- Interactive Background Particle Canvas -->
+    <canvas id="cyberCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Futuristic Grid Overlay -->
+    <div class="fixed inset-0 bg-[linear-gradient(to_right,#00f5ff08_1px,transparent_1px),linear-gradient(to_bottom,#00f5ff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+
+    <!-- Ambient Glow Spots -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] right-[-10%] w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[150px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- Top System Telemetry Bar -->
+    <div class="w-full bg-slate-950/90 border-b border-cyan-500/20 text-xs font-mono py-1.5 px-4 z-50 backdrop-blur-md relative hidden sm:block">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-slate-400">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center text-cyber-cyan">
+                    <span class="inline-block w-2 h-2 rounded-full bg-cyber-cyan animate-ping mr-2"></span>
+                    SISTEMA: EN LÍNEA
+                </span>
+                <span class="text-slate-600">|</span>
+                <span>UBICACIÓN: COLOMBIA</span>
+                <span class="text-slate-600">|</span>
+                <span>NODO: INGENIERÍA_SISTEMAS_v2.4</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-cyber-emerald flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> DISPONIBLE PARA CONSULTORÍA & PROYECTOS
+                </span>
+                <span class="text-slate-600">|</span>
+                <span id="systemClock" class="text-slate-300">00:00:00 UTC</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/70 border-b border-cyan-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo / Brand -->
+            <a href="#inicio" class="flex items-center space-x-3 group">
+                <div class="relative w-11 h-11 flex items-center justify-center bg-slate-900 border border-cyber-cyan rounded-lg overflow-hidden group-hover:shadow-neon-cyan transition-all duration-300">
+                    <span class="font-orbitron font-bold text-cyber-cyan text-lg">JG</span>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div>
+                    <div class="font-orbitron font-bold text-lg text-white tracking-wider flex items-center gap-1.5">
+                        JHOAN GALEANO <span class="text-cyber-cyan text-xs font-mono font-normal">// INGENIERO TI</span>
+                    </div>
+                    <div class="text-xs font-mono text-slate-400">Consultoría & Soluciones Digitales</div>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-7 font-mono text-sm tracking-wide">
+                <a href="#inicio" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">01.</span> INICIO
+                </a>
+                <a href="#perfil" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">02.</span> PERFIL
+                </a>
+                <a href="#servicios" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">03.</span> SERVICIOS
+                </a>
+                <a href="#clientes" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">04.</span> CLIENTES
+                </a>
+                <a href="#terminal" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">05.</span> TERMINAL
+                </a>
+                <a href="#contacto" class="text-slate-300 hover:text-cyber-cyan transition-colors flex items-center gap-1.5 group">
+                    <span class="text-cyber-cyan text-xs">06.</span> CONTACTO
+                </a>
+            </nav>
+
+            <!-- Action Button & Audio Toggle -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <button id="soundToggle" title="Activar/Silenciar efectos de sonido cibernéticos" class="p-2 text-slate-400 hover:text-cyber-cyan border border-slate-800 hover:border-cyber-cyan/50 rounded-lg bg-slate-900/80 transition-all">
+                    <i data-lucide="volume-2" id="soundIcon" class="w-4 h-4"></i>
+                </button>
+                <a href="#contacto" class="cyber-btn px-5 py-2.5 rounded font-orbitron text-xs font-bold uppercase tracking-wider text-black bg-cyber-cyan hover:bg-cyan-400 transition-all shadow-neon-cyan flex items-center gap-2">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Iniciar Consulta
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-300 hover:text-cyber-cyan border border-cyan-500/30 rounded-lg">
+                <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-cyan-500/20 backdrop-blur-2xl px-6 py-6 space-y-4 font-mono text-sm">
+            <a href="#inicio" class="block py-2 text-slate-200 hover:text-cyber-cyan border-b border-slate-900">01. INICIO</a>
+            <a href="#perfil" class="block py-2 text-slate-200 hover:text-cyber-cyan border-b border-slate-900">02. PERFIL ACADÉMICO & SKILLS</a>
+            <a href="#servicios" class="block py-2 text-slate-200 hover:text-cyber-cyan border-b border-slate-900">03. SERVICIOS DE CONSULTORÍA</a>
+            <a href="#clientes" class="block py-2 text-slate-200 hover:text-cyber-cyan border-b border-slate-900">04. EXPERIENCIA & CLIENTES</a>
+            <a href="#terminal" class="block py-2 text-slate-200 hover:text-cyber-cyan border-b border-slate-900">05. TERMINAL JHOAN-OS</a>
+            <a href="#contacto" class="block py-2 text-slate-200 hover:text-cyber-cyan">06. CONTACTO</a>
+            <div class="pt-4 flex items-center gap-3">
+                <a href="#contacto" class="w-full text-center py-3 bg-cyber-cyan text-black font-orbitron font-bold text-xs uppercase tracking-wider rounded">
+                    Solicitar Consultoría
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+
+        <!-- SECTION 1: HERO SECTION -->
+        <section id="inicio" class="min-h-[calc(100vh-5rem)] flex items-center justify-center pt-8 pb-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Presentation & Value Proposition -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/10 text-cyber-cyan font-mono text-xs tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
+                        <span>INGENIERÍA DE SISTEMAS // CONSULTORÍA TECNOLÓGICA</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-orbitron font-black tracking-tight text-white leading-tight">
+                        ARQUITECTURA <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-blue-400 to-cyber-violet cyber-glitch" data-text="DIGITAL DEL FUTURO">DIGITAL DEL FUTURO</span>
+                        <br>PARA EMPRESAS REALES.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-rajdhani font-medium leading-relaxed max-w-2xl">
+                        Hola, soy <span class="text-cyber-cyan font-semibold">Jhoan Galeano</span>. Transformo requerimientos complejos en 
+                        sistemas de software robustos, plataformas web escalables y estrategias de modernización informática que impulsan la competitividad operativa.
+                    </p>
+
+                    <!-- Key highlights badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs text-slate-300">
+                        <div class="flex items-center gap-2 p-2.5 rounded bg-slate-900/60 border border-slate-800">
+                            <i data-lucide="cpu" class="w-4 h-4 text-cyber-cyan"></i>
+                            <span>Desarrollo Web</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-2.5 rounded bg-slate-900/60 border border-slate-800">
+                            <i data-lucide="network" class="w-4 h-4 text-cyber-violet"></i>
+                            <span>Consultoría TI</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-2.5 rounded bg-slate-900/60 border border-slate-800 col-span-2 sm:col-span-1">
+                            <i data-lucide="workflow" class="w-4 h-4 text-cyber-emerald"></i>
+                            <span>Optimización de Procesos</span>
+                        </div>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="pt-4 flex flex-wrap items-center gap-4">
+                        <a href="#contacto" class="cyber-btn px-6 py-3.5 rounded font-orbitron text-xs font-bold uppercase tracking-wider text-black bg-cyber-cyan hover:bg-cyan-400 transition-all shadow-neon-cyan flex items-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i> Agendar Diagnóstico
+                        </a>
+                        <a href="#clientes" class="px-6 py-3.5 rounded font-orbitron text-xs font-bold uppercase tracking-wider text-slate-200 border border-slate-700 hover:border-cyber-cyan/50 hover:text-cyber-cyan bg-slate-900/50 hover:bg-slate-900 transition-all flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i> Ver Casos de Éxito
+                        </a>
+                        <a href="#terminal" class="px-4 py-3.5 rounded font-mono text-xs text-slate-400 hover:text-cyber-emerald border border-slate-800 hover:border-emerald-500/50 transition-all flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-4 h-4 text-cyber-emerald"></i> CLI Interactive
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Futuristic Holographic Spec Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full max-w-md mx-auto">
+                        
+                        <!-- Glowing backdrop card -->
+                        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyber-cyan/40 via-violet-600/30 to-emerald-500/30 blur-xl opacity-70 group-hover:opacity-100 transition duration-1000"></div>
+                        
+                        <!-- Main HUD Card -->
+                        <div class="relative rounded-xl bg-slate-950/80 border border-cyber-cyan/40 backdrop-blur-xl p-6 sm:p-7 shadow-cyber-card overflow-hidden">
+                            
+                            <!-- Cyber Corner Brackets -->
+                            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyber-cyan"></div>
+                            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyber-cyan"></div>
+                            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyber-cyan"></div>
+                            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyber-cyan"></div>
+
+                            <!-- Header of Card -->
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-3 h-3 rounded-full bg-cyber-cyan animate-ping"></div>
+                                    <span class="font-mono text-xs uppercase tracking-widest text-slate-400">TELEMETRÍA // PERFIL</span>
+                                </div>
+                                <span class="font-mono text-xs text-cyber-cyan px-2 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/20">
+                                    v2026.11
+                                </span>
+                            </div>
+
+                            <!-- Avatar & Quick Info -->
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="relative w-16 h-16 rounded-xl bg-gradient-to-tr from-slate-900 to-slate-800 border-2 border-cyber-cyan/60 flex items-center justify-center p-1">
+                                    <i data-lucide="terminal" class="w-8 h-8 text-cyber-cyan"></i>
+                                    <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-950"></span>
+                                </div>
+                                <div>
+                                    <h3 class="font-orbitron font-bold text-white text-lg">Jhoan Galeano</h3>
+                                    <p class="text-xs font-mono text-cyber-cyan">Ingeniería de Sistemas</p>
+                                    <p class="text-xs text-slate-400">Consultor Informático & Full Stack</p>
+                                </div>
+                            </div>
+
+                            <!-- Stats & Capabilities Bars -->
+                            <div class="space-y-4 font-mono text-xs">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-slate-400">Consultoría TI & Diagnóstico</span>
+                                        <span class="text-cyber-cyan font-bold">96%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-800">
+                                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full w-[96%]"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-slate-400">Desarrollo Web & Arquitectura</span>
+                                        <span class="text-cyber-violet font-bold">94%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-800">
+                                        <div class="bg-gradient-to-r from-violet-500 to-purple-500 h-full rounded-full w-[94%]"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-slate-400">Gestión de Datos & Automatización</span>
+                                        <span class="text-cyber-emerald font-bold">92%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-800">
+                                        <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full w-[92%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Enterprise Track Record Card Footer -->
+                            <div class="mt-6 pt-4 border-t border-slate-800/80">
+                                <div class="text-[11px] font-mono text-slate-400 mb-2">ORGANIZACIONES ASESORADAS:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">AVICTRANS</span>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">COOTRANSTEFLUARAUCA</span>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">DICMECAMP</span>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">AGROINVERSIONESJG</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: TELEMETRY & TRUST TICKER -->
+        <section class="border-y border-cyan-500/20 bg-slate-950/60 backdrop-blur-md py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    
+                    <div class="space-y-1">
+                        <div class="font-orbitron font-bold text-3xl sm:text-4xl text-cyber-cyan flex items-center justify-center gap-1">
+                            <span>4</span><span class="text-xs text-cyber-cyan font-mono">+</span>
+                        </div>
+                        <div class="text-xs font-mono uppercase text-slate-400 tracking-wider">Empresas Asesoradas</div>
+                        <div class="text-[11px] text-slate-500">Transporte, Agro e Industria</div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="font-orbitron font-bold text-3xl sm:text-4xl text-cyber-violet flex items-center justify-center gap-1">
+                            <span>100</span><span class="text-xs text-cyber-violet font-mono">%</span>
+                        </div>
+                        <div class="text-xs font-mono uppercase text-slate-400 tracking-wider">Compromiso y Rigor</div>
+                        <div class="text-[11px] text-slate-500">Fundamentación en Ingeniería</div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="font-orbitron font-bold text-3xl sm:text-4xl text-cyber-emerald flex items-center justify-center gap-1">
+                            <span>24/7</span>
+                        </div>
+                        <div class="text-xs font-mono uppercase text-slate-400 tracking-wider">Visión Tecnológica</div>
+                        <div class="text-[11px] text-slate-500">Arquitecturas Escalables</div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="font-orbitron font-bold text-3xl sm:text-4xl text-amber-400 flex items-center justify-center gap-1">
+                            <span>Full</span><span class="text-xs text-amber-400 font-mono">Stack</span>
+                        </div>
+                        <div class="text-xs font-mono uppercase text-slate-400 tracking-wider">Ciclo de Desarrollo</div>
+                        <div class="text-[11px] text-slate-500">De la idea al despliegue</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ACADEMIC PROFILE & SKILLS (PERFIL DEL INGENIERO) -->
+        <section id="perfil" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-cyber-cyan tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 bg-cyber-cyan rounded-full"></span> [ 02. PERFIL PROFESIONAL & FORMACIÓN ]
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-white tracking-wide">
+                        INGENIERÍA APLICADA AL MUNDO REAL
+                    </h2>
+                    <p class="text-slate-300 font-rajdhani text-lg">
+                        Como estudiante de Ingeniería de Sistemas, combino bases teóricas de ciencias de la computación con capacidad resolutiva para diseñar soluciones prácticas que incrementan la productividad empresarial.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Fundamento Académico -->
+                    <div class="cyber-card p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-cyber-cyan/40 transition-all duration-300 relative group">
+                        <div class="w-12 h-12 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl text-white mb-2">Ingeniería de Sistemas</h3>
+                        <div class="text-xs font-mono text-cyber-cyan mb-4">FORMACIÓN UNIVERSITARIA CONTINUA</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Enfoque integral en el ciclo de vida del software, estructuras de datos, algoritmia avanzada, arquitectura de sistemas y gestión de bases de datos relacionales y no relacionales.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-cyan"></i> Análisis y Modelado UML / BPMN
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-cyan"></i> Ingeniería de Requisitos
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-cyan"></i> Metodologías Ágiles (Scrum, Kanban)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Arquitectura & Desarrollo Web -->
+                    <div class="cyber-card p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-cyber-violet/40 transition-all duration-300 relative group">
+                        <div class="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-cyber-violet mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl text-white mb-2">Desarrollo Web Moderno</h3>
+                        <div class="text-xs font-mono text-cyber-violet mb-4">SOLUCIONES FRONTEND & BACKEND</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Creación de aplicaciones web con código limpio, modular y optimizado para máxima velocidad de carga, experiencia de usuario intuitiva y diseño responsivo adaptado a cualquier dispositivo.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-violet"></i> HTML5, CSS3 Moderno, JavaScript ES6+
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-violet"></i> Tailwind CSS, Frameworks Reactivos & APIs
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-violet"></i> Integración Backend & Bases de Datos
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 3: Consultoría Informática -->
+                    <div class="cyber-card p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/40 transition-all duration-300 relative group">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-cyber-emerald mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="binary" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl text-white mb-2">Consultoría & Auditoría TI</h3>
+                        <div class="text-xs font-mono text-cyber-emerald mb-4">TRANSFORMACIÓN DIGITAL EMPRESARIAL</div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Acompañamiento estratégico a organizaciones para evaluar su estado tecnológico actual, mitigar riesgos de pérdida de datos, optimizar hardware/software y estructurar flujos automatizados.
+                        </p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-emerald"></i> Diagnóstico y Mapeo Tecnológico
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-emerald"></i> Políticas de Respaldo y Seguridad
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-cyber-emerald"></i> Selección de Herramientas Operativas
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Tech Stack Matrix -->
+                <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-slate-950/80 border border-cyan-500/20 backdrop-blur-xl">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+                        <div>
+                            <h4 class="font-orbitron font-bold text-white text-lg flex items-center gap-2">
+                                <i data-lucide="layers" class="w-5 h-5 text-cyber-cyan"></i> MATRIZ DE COMPETENCIAS TÉCNICAS
+                            </h4>
+                            <p class="text-xs font-mono text-slate-400">Tecnologías y herramientas aplicadas en proyectos de ingeniería</p>
+                        </div>
+                        <span class="text-xs font-mono text-cyber-cyan px-3 py-1 rounded bg-slate-900 border border-cyan-500/30 self-start sm:self-auto">
+                            STATUS: EN EXPANSIÓN CONSTANTE
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 pt-6">
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">HTML5 / CSS3</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">Responsive Design</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">JavaScript</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">ES6+ & Async/Await</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">Tailwind CSS</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">UI/UX Futurista</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">SQL / RDBMS</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">Modelado de Datos</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">Git & GitHub</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">Control de Versiones</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-center hover:border-cyber-cyan/50 transition-colors">
+                            <div class="font-orbitron font-bold text-white text-sm">Redes & Soporte</div>
+                            <div class="text-[11px] font-mono text-slate-400 mt-1">Infraestructura TI</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: SERVICIOS OFRECIDOS -->
+        <section id="servicios" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-950/40 relative">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-cyber-violet tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 bg-cyber-violet rounded-full"></span> [ 03. CATÁLOGO DE SERVICIOS ]
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-white tracking-wide">
+                        SOLUCIONES TECNOLÓGICAS DE ALTO IMPACTO
+                    </h2>
+                    <p class="text-slate-300 font-rajdhani text-lg">
+                        Servicios especializados orientados a modernizar operaciones, automatizar flujos y posicionar a las empresas con presencia digital sólida y segura.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Service 1: Consultoría Informática Integral -->
+                    <div class="p-8 rounded-xl bg-slate-900/40 border border-slate-800 hover:border-cyber-cyan transition-all duration-300 relative group overflow-hidden">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan">
+                                <i data-lucide="cpu" class="w-7 h-7"></i>
+                            </div>
+                            <span class="font-mono text-xs text-slate-500 group-hover:text-cyber-cyan transition-colors">SRV_01</span>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-2xl text-white mb-3">Consultoría Informática & Auditoría TI</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6 font-rajdhani text-base">
+                            Evaluación exhaustiva del parque computacional, redes locales, licencias y procesos de información de su empresa. Identifico vulnerabilidades operativas y propongo hojas de ruta de modernización con el mayor retorno de inversión.
+                        </p>
+                        <div class="space-y-2 border-t border-slate-800/80 pt-4 font-mono text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan"></i> Diagnóstico de infraestructura de hardware y software</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan"></i> Asesoría en adquisición e implementación de tecnologías</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-cyan"></i> Planes de contingencia y aseguramiento de datos</div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Desarrollo Web Profesional -->
+                    <div class="p-8 rounded-xl bg-slate-900/40 border border-slate-800 hover:border-cyber-violet transition-all duration-300 relative group overflow-hidden">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-cyber-violet">
+                                <i data-lucide="globe" class="w-7 h-7"></i>
+                            </div>
+                            <span class="font-mono text-xs text-slate-500 group-hover:text-cyber-violet transition-colors">SRV_02</span>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-2xl text-white mb-3">Desarrollo Web & Portales Corporativos</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6 font-rajdhani text-base">
+                            Diseño y construcción de sitios web empresariales, páginas de aterrizaje (landing pages) de alta conversión y plataformas web a la medida con diseño vanguardista, optimizadas para SEO y velocidad de carga excepcional.
+                        </p>
+                        <div class="space-y-2 border-t border-slate-800/80 pt-4 font-mono text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-violet"></i> Sitios corporativos modernos, responsivos y dinámicos</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-violet"></i> Paneles de administración y dashboards internos</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-violet"></i> Integración con WhatsApp, formularios y pasarelas</div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Automatización & Digitalización de Procesos -->
+                    <div class="p-8 rounded-xl bg-slate-900/40 border border-slate-800 hover:border-cyber-emerald transition-all duration-300 relative group overflow-hidden">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-cyber-emerald">
+                                <i data-lucide="git-merge" class="w-7 h-7"></i>
+                            </div>
+                            <span class="font-mono text-xs text-slate-500 group-hover:text-cyber-emerald transition-colors">SRV_03</span>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-2xl text-white mb-3">Digitalización & Automatización de Flujos</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6 font-rajdhani text-base">
+                            Reemplazo de procesos manuales o en papel mediante hojas de cálculo conectadas, formularios interactivos y sistemas de inventario que reducen errores humanos y liberan tiempo operativo de su equipo.
+                        </p>
+                        <div class="space-y-2 border-t border-slate-800/80 pt-4 font-mono text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-emerald"></i> Migración de planillas físicas a entornos digitales</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-emerald"></i> Automatización de reportes e indicadores clave (KPIs)</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-cyber-emerald"></i> Integración de herramientas en la nube (Cloud)</div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Soporte Tecnológico Continuo -->
+                    <div class="p-8 rounded-xl bg-slate-900/40 border border-slate-800 hover:border-amber-400 transition-all duration-300 relative group overflow-hidden">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                                <i data-lucide="shield-check" class="w-7 h-7"></i>
+                            </div>
+                            <span class="font-mono text-xs text-slate-500 group-hover:text-amber-400 transition-colors">SRV_04</span>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-2xl text-white mb-3">Soporte Técnico, Redes & Continuidad</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6 font-rajdhani text-base">
+                            Mantenimiento de sistemas, configuración segura de puestos de trabajo, redes de área local (LAN/Wi-Fi) y asistencia técnica confiable para garantizar que su negocio nunca se detenga.
+                        </p>
+                        <div class="space-y-2 border-t border-slate-800/80 pt-4 font-mono text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Soporte informático preventivo y correctivo</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Configuración de servidores locales y compartición segura</div>
+                            <div class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Asistencia técnica remota y presencial</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: CASOS DE ÉXITO & CLIENTES REALES (AVICTRANS, COOTRANSTEFLUARAUCA, DICMECAMP, AGROINVERSIONESJG) -->
+        <section id="clientes" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-cyber-cyan tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 bg-cyber-cyan rounded-full"></span> [ 04. EXPERIENCIA COMPROBADA ]
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-white tracking-wide">
+                        ORGANIZACIONES QUE CONFÍAN EN MIS SERVICIOS
+                    </h2>
+                    <p class="text-slate-300 font-rajdhani text-lg">
+                        Casos reales donde la consultoría informática y las soluciones digitales aportaron valor medible, continuidad operativa y modernización de procesos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Client 1: AVICTRANS -->
+                    <div class="cyber-card p-7 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyber-cyan transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-cyber-cyan uppercase tracking-wider block mb-1">Sector: Transporte & Logística</span>
+                                    <h3 class="font-orbitron font-black text-2xl text-white tracking-wide">AVICTRANS</h3>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan font-mono text-xs">
+                                    CASO_01
+                                </span>
+                            </div>
+                            
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-rajdhani">
+                                Prestación de servicios de consultoría informática y soporte tecnológico para la optimización de sistemas de control operativo y transporte. Se diagnosticaron necesidades críticas de comunicación de datos entre sedes y se fortaleció la continuidad del soporte informático interno.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-800/80 pt-4 space-y-2">
+                            <div class="text-xs font-mono text-slate-400">SERVICIOS PRESTADOS:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Consultoría de TI</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Soporte Técnico Especializado</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Optimización Operativa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Client 2: COOTRANSTEFLUARAUCA -->
+                    <div class="cyber-card p-7 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyber-violet transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-cyber-violet uppercase tracking-wider block mb-1">Sector: Transporte Terrestre & Fluvial</span>
+                                    <h3 class="font-orbitron font-black text-2xl text-white tracking-wide">COOTRANSTEFLUARAUCA</h3>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-violet-500/10 border border-violet-500/30 text-cyber-violet font-mono text-xs">
+                                    CASO_02
+                                </span>
+                            </div>
+                            
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-rajdhani">
+                                Acompañamiento tecnológico y consultoría en sistemas para una entidad clave del transporte en la región de Arauca. Asesoramiento en infraestructura informática, mantenimiento de equipos de oficina, organización de sistemas de información de rutas y atención a usuarios.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-800/80 pt-4 space-y-2">
+                            <div class="text-xs font-mono text-slate-400">SERVICIOS PRESTADOS:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Infraestructura Informática</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Seguridad & Respaldos</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Asistencia Operativa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Client 3: DICMECAMP -->
+                    <div class="cyber-card p-7 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyber-emerald transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-cyber-emerald uppercase tracking-wider block mb-1">Sector: Ingeniería Mecánica & Mantenimiento Industrial</span>
+                                    <h3 class="font-orbitron font-black text-2xl text-white tracking-wide">DICMECAMP</h3>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-cyber-emerald font-mono text-xs">
+                                    CASO_03
+                                </span>
+                            </div>
+                            
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-rajdhani">
+                                Consultoría tecnológica enfocada en la digitalización de reportes de mantenimiento, gestión de órdenes de servicio y estructuración de presencia digital corporativa. Fortalecimiento de la agilidad en la entrega de cotizaciones e interacción comercial mediante herramientas digitales.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-800/80 pt-4 space-y-2">
+                            <div class="text-xs font-mono text-slate-400">SERVICIOS PRESTADOS:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Digitalización de Procesos</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Diseño & Presencia Web</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Gestión Documental Digital</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Client 4: AGROINVERSIONESJG -->
+                    <div class="cyber-card p-7 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-400 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-amber-400 uppercase tracking-wider block mb-1">Sector: Agroindustria & Gestión de Inversiones</span>
+                                    <h3 class="font-orbitron font-black text-2xl text-white tracking-wide">AGROINVERSIONESJG</h3>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs">
+                                    CASO_04
+                                </span>
+                            </div>
+                            
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-rajdhani">
+                                Implementación de soluciones informáticas para el control y seguimiento de finanzas agropecuarias, inventario de insumos y digitalización de rendimientos de producción. Asesoría técnica para la toma de decisiones basada en métricas digitales claras.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-800/80 pt-4 space-y-2">
+                            <div class="text-xs font-mono text-slate-400">SERVICIOS PRESTADOS:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Sistemas de Control de Insumos</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Automatización de Reportes</span>
+                                <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300">Consultoría TI Agroindustrial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: INTERACTIVE CYBER TERMINAL (EASTER EGG PROFESSOR-GRADE) -->
+        <section id="terminal" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950/70 border-t border-cyan-500/20 relative">
+            <div class="max-w-4xl mx-auto">
+                
+                <div class="text-center mb-10 space-y-3">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-cyber-emerald tracking-widest uppercase">
+                        <i data-lucide="terminal" class="w-4 h-4"></i> [ 05. TERMINAL JHOAN-OS CLI ]
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-orbitron font-bold text-white">
+                        INTERFAZ DE LÍNEA DE COMANDOS EN VIVO
+                    </h2>
+                    <p class="text-slate-400 font-mono text-xs">
+                        Escribe <span class="text-cyber-cyan font-bold">help</span> para consultar los comandos disponibles o explora los datos del sistema.
+                    </p>
+                </div>
+
+                <!-- Terminal Window -->
+                <div class="rounded-xl bg-slate-950 border border-cyber-cyan/40 shadow-neon-cyan overflow-hidden font-mono text-xs sm:text-sm">
+                    
+                    <!-- Terminal Window Bar -->
+                    <div class="bg-slate-900/90 px-4 py-2.5 flex items-center justify-between border-b border-slate-800">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80 cursor-pointer"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500/80 cursor-pointer"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500/80 cursor-pointer"></div>
+                            <span class="text-slate-400 text-xs ml-2">bash - jhoan@core-node: ~/portfolio</span>
+                        </div>
+                        <div class="text-[11px] text-cyber-cyan">UTF-8 // STATUS: READY</div>
+                    </div>
+
+                    <!-- Terminal Output Area -->
+                    <div id="terminalBody" class="p-4 sm:p-6 min-h-[300px] max-h-[420px] overflow-y-auto space-y-3 text-slate-300">
+                        <div class="text-cyber-cyan font-mono leading-relaxed">
+                            ====================================================================<br>
+                            &nbsp;&nbsp;JHOAN GALEANO // INGENIERÍA DE SISTEMAS & CONSULTORÍA TI<br>
+                            &nbsp;&nbsp;Sistema Operativo v2.4 (Simulado para demostración académica y comercial)<br>
+                            ====================================================================<br>
+                            <span class="text-slate-400">Escribe <span class="text-emerald-400 font-bold">help</span> para ver la lista de comandos disponibles.</span>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Input Line -->
+                    <div class="bg-slate-900/40 p-3 sm:px-6 flex items-center border-t border-slate-800">
+                        <span class="text-cyber-emerald font-bold mr-2">jhoan@core:~$</span>
+                        <input type="text" id="terminalInput" class="w-full bg-transparent text-cyber-cyan focus:outline-none font-mono text-xs sm:text-sm caret-cyber-cyan" placeholder="Escribe un comando (ej: help, clients, skills)..." autocomplete="off" spellcheck="false">
+                        <button id="terminalSend" class="text-slate-400 hover:text-cyber-cyan px-2 py-1">
+                            <i data-lucide="corner-down-left" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 7: CONTACTO & DIAGNÓSTICO -->
+        <section id="contacto" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-cyber-cyan tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 bg-cyber-cyan rounded-full"></span> [ 06. INICIAR COMUNICACIÓN ]
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-white tracking-wide">
+                        CONVERSEMOS SOBRE TU PRÓXIMO PROYECTO
+                    </h2>
+                    <p class="text-slate-300 font-rajdhani text-lg">
+                        ¿Requieres consultoría informática para tu empresa, el desarrollo de un sitio web o la optimización de procesos? Envíame un mensaje y te responderé en breve.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Direct Contact Cards -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyber-cyan/50 transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-cyber-emerald">
+                                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs font-mono text-slate-400">CANAL DIRECTO WHATSAPP</div>
+                                    <div class="text-white font-orbitron font-bold text-lg">Chat Inmediato</div>
+                                </div>
+                                <a href="https://wa.me/573214567890?text=Hola%20Jhoan,%20vi%20tu%20pagina%20web%20y%20me%20gustaria%20solicitar%20informacion%20sobre%20tus%20servicios" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded bg-emerald-500 hover:bg-emerald-400 text-black font-bold transition-all">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyber-cyan/50 transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs font-mono text-slate-400">CORREO ELECTRÓNICO</div>
+                                    <div class="text-white font-mono text-sm break-all" id="emailDisplay">jhoangaleano.ingenieria@gmail.com</div>
+                                </div>
+                                <button onclick="navigator.clipboard.writeText('jhoangaleano.ingenieria@gmail.com'); alert('¡Correo copiado al portapapeles!');" title="Copiar correo" class="p-2.5 rounded bg-slate-800 hover:bg-cyber-cyan hover:text-black text-slate-300 transition-all">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <div class="text-xs font-mono text-cyber-cyan mb-2">HORARIO DE ATENCIÓN & DISPONIBILIDAD:</div>
+                            <div class="space-y-1.5 font-mono text-xs text-slate-300">
+                                <div class="flex justify-between">
+                                    <span>Lunes a Viernes:</span>
+                                    <span class="text-slate-400">08:00 - 18:00 (GMT-5)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sábados:</span>
+                                    <span class="text-slate-400">09:00 - 13:00 (GMT-5)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Modalidad:</span>
+                                    <span class="text-cyber-emerald">Remoto / Presencial</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Contact Form with Futuristic Validation -->
+                    <div class="lg:col-span-7">
+                        <div class="relative p-7 sm:p-8 rounded-2xl bg-slate-950/80 border border-cyan-500/30 backdrop-blur-xl shadow-cyber-card">
+                            
+                            <!-- Form Corner Accents -->
+                            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyber-cyan"></div>
+                            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyber-cyan"></div>
+
+                            <h3 class="font-orbitron font-bold text-white text-xl mb-6 flex items-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5 text-cyber-cyan"></i> FORMULARIO DE TRANSMISIÓN DE DATOS
+                            </h3>
+
+                            <form id="contactForm" class="space-y-5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block font-mono text-xs text-slate-400 mb-2">NOMBRE / EMPRESA *</label>
+                                        <input type="text" id="formName" required placeholder="Ej: Ing. Carlos / Empresa S.A.S" class="w-full bg-slate-900 border border-slate-800 focus:border-cyber-cyan rounded-lg px-4 py-3 text-white text-sm font-rajdhani focus:outline-none transition-colors">
+                                    </div>
+                                    <div>
+                                        <label class="block font-mono text-xs text-slate-400 mb-2">CORREO ELECTRÓNICO *</label>
+                                        <input type="email" id="formEmail" required placeholder="nombre@correo.com" class="w-full bg-slate-900 border border-slate-800 focus:border-cyber-cyan rounded-lg px-4 py-3 text-white text-sm font-rajdhani focus:outline-none transition-colors">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block font-mono text-xs text-slate-400 mb-2">SERVICIO REQUERIDO *</label>
+                                    <select id="formService" required class="w-full bg-slate-900 border border-slate-800 focus:border-cyber-cyan rounded-lg px-4 py-3 text-white text-sm font-rajdhani focus:outline-none transition-colors">
+                                        <option value="Consultoría Informática & Auditoría TI">Consultoría Informática & Auditoría TI</option>
+                                        <option value="Desarrollo Web & Plataformas a Medida">Desarrollo Web & Plataformas a Medida</option>
+                                        <option value="Digitalización & Automatización de Procesos">Digitalización & Automatización de Procesos</option>
+                                        <option value="Soporte Técnico, Redes & Continuidad">Soporte Técnico, Redes & Continuidad</option>
+                                        <option value="Otro / Asesoría Personalizada">Otro / Asesoría Personalizada</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block font-mono text-xs text-slate-400 mb-2">DETALLES DEL PROYECTO O CONSULTA *</label>
+                                    <textarea id="formMessage" rows="4" required placeholder="Describa brevemente la necesidad o requerimiento..." class="w-full bg-slate-900 border border-slate-800 focus:border-cyber-cyan rounded-lg px-4 py-3 text-white text-sm font-rajdhani focus:outline-none transition-colors"></textarea>
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="w-full cyber-btn py-3.5 px-6 rounded-lg font-orbitron text-xs font-bold uppercase tracking-wider text-black bg-cyber-cyan hover:bg-cyan-400 transition-all shadow-neon-cyan flex items-center justify-center gap-2">
+                                    <i data-lucide="radio" class="w-4 h-4"></i> ENVIAR TRANSMISIÓN // INICIAR CONTACTO
+                                </button>
+
+                                <div id="formFeedback" class="hidden p-4 rounded-lg font-mono text-xs"></div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-cyan-500/20 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 relative z-10 font-mono text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-slate-900 border border-cyber-cyan flex items-center justify-center font-orbitron font-bold text-cyber-cyan text-sm">
+                    JG
+                </div>
+                <div>
+                    <div class="text-white font-orbitron font-semibold">JHOAN GALEANO</div>
+                    <div class="text-[11px] text-slate-500">Ingeniería de Sistemas // Consultoría TI & Web</div>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6 text-slate-400">
+                <a href="#inicio" class="hover:text-cyber-cyan transition-colors">Inicio</a>
+                <a href="#perfil" class="hover:text-cyber-cyan transition-colors">Perfil</a>
+                <a href="#servicios" class="hover:text-cyber-cyan transition-colors">Servicios</a>
+                <a href="#clientes" class="hover:text-cyber-cyan transition-colors">Clientes</a>
+                <a href="#terminal" class="hover:text-cyber-cyan transition-colors">Terminal</a>
+            </div>
+
+            <div class="text-right">
+                <div class="text-cyber-cyan font-mono text-[11px]">HASH: 0x7F9A_JHOAN_2026</div>
+                <div class="text-slate-500 text-[10px]">Desarrollado con rigor de ingeniería y estética futurista.</div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
